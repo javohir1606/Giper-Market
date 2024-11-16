@@ -5,14 +5,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 
 export const Banner = () => {
   const { data } = useGetBanners();
   return (
     <>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y,Autoplay]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         slidesPerView={1}
         navigation={true}
         pagination={{ clickable: true }}

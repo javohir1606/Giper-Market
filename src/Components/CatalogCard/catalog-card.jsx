@@ -11,7 +11,6 @@ export const CatalogCard = ({ item }) => {
         height={"192px"}
         py={"14px"}
         px={"16px"}
-        // width={"241px"}
         bgcolor={"#F6F6F6"}
       >
         <img style={{ width: "96px" }} src={item.img} alt="#" />

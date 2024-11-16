@@ -7,7 +7,7 @@ export const theme = createTheme({
       xs: 0,
       sm: 300,
       md: 900,
-      lg: 1386,
+      lg: 1456,
       xl: 1648,
     },
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearch } from "../../Service/Query/useSearch";
 import useDebounce from "../../config/useDebounce";
-import { Box, colors, Typography } from "@mui/material";
+import { Box, colors, Stack, Typography } from "@mui/material";
 import { Colors } from "../../mui-config/colors";
 import { SearchIcon } from "../../assets/icons/search-icon";
 export const Search = () => {
@@ -32,12 +32,32 @@ export const Search = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </Box>
-        {data?.map((item) => (
-          <Box>
-            <img src={item.img} alt="#" />
-            <Typography>{item.title}</Typography>
-          </Box>
-        ))}
+        <Box
+          position={"absolute"}
+          mt={"50px"}
+          zIndex={5}
+          height={"300px"}
+          overflow={"auto"}
+          left={"50%"}
+          sx={{ scrollbarColor: "red black", transform: "translateX(-45%)" }}
+        >
+          {data?.map((item) => (
+            <Stack
+              mt={"20px"}
+              direction={"row"}
+              bgcolor={"white"}
+              width={"500px"}
+              height={"180px"}
+              borderRadius={"20px"}
+              alignItems={"center"}
+              zIndex={2}
+              key={item.id}
+            >
+              <img style={{ height: "180px" }} src={item.img} alt="#" />
+              <Typography>{item.title}</Typography>
+            </Stack>
+          ))}
+        </Box>
       </Box>
     </>
   );
