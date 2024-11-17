@@ -13,6 +13,7 @@ import img2 from "../../assets/img/img2.png";
 import img3 from "../../assets/img/img3.png";
 import { useGetBrands } from "../../Service/Query/useGetBrands";
 import { BrandCard } from "../../Components/BrandCard";
+import { HomeCards } from "../../Components/Home-card/home-cards";
 export const Home = () => {
   const { data } = useGetCatalog();
   const { data: brands } = useGetBrands();
@@ -39,6 +40,7 @@ export const Home = () => {
       <Box mb={"32px"}>
         <ProductWrapper name={"Смартфоны и планшеты"} path={"phones"} />
       </Box>
+
       <Box bgcolor={"#00CBFE"} pt={"16px"} pb={"30px"} mb={"32px"}>
         <Container maxWidth="lg">
           <Box mb={"24px"}>
@@ -61,6 +63,19 @@ export const Home = () => {
             <Box>
               <img src={img3} alt="#" />
             </Box>
+          </Stack>
+        </Container>
+      </Box>
+      <Box py={"48px"}>
+        <Container maxWidth="lg">
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <HomeCards path={"phones"} name={"Смартфоны и планшеты"} />
+            <HomeCards path={"notebook"} name={"Ноутбуки, планшеты и компьютеры"} />
+            <HomeCards path={"phones"} name={"Смартфоны и планшеты"} />
           </Stack>
         </Container>
       </Box>
