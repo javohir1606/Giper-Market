@@ -14,6 +14,7 @@ import img3 from "../../assets/img/img3.png";
 import { useGetBrands } from "../../Service/Query/useGetBrands";
 import { BrandCard } from "../../Components/BrandCard";
 import { HomeCards } from "../../Components/Home-card/home-cards";
+import { Link } from "react-router-dom";
 export const Home = () => {
   const { data } = useGetCatalog();
   const { data: brands } = useGetBrands();
@@ -32,7 +33,12 @@ export const Home = () => {
         >
           {data?.map((item) => (
             <SwiperSlide key={item.id}>
-              <CatalogCard item={item} />
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`catalog/${item.name}/${item.text}`}
+              >
+                <CatalogCard text={item.text} item={item} />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -74,7 +80,10 @@ export const Home = () => {
             justifyContent={"space-between"}
           >
             <HomeCards path={"phones"} name={"Смартфоны и планшеты"} />
-            <HomeCards path={"notebook"} name={"Ноутбуки, планшеты и компьютеры"} />
+            <HomeCards
+              path={"notebook"}
+              name={"Ноутбуки, планшеты и компьютеры"}
+            />
             <HomeCards path={"phones"} name={"Смартфоны и планшеты"} />
           </Stack>
         </Container>

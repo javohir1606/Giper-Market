@@ -5,6 +5,7 @@ export const CatalogCard = ({ item }) => {
   return (
     <>
       <Stack
+        justifyContent={"center"}
         direction={"row"}
         gap={"16px"}
         alignItems={"center"}
@@ -14,7 +15,7 @@ export const CatalogCard = ({ item }) => {
         bgcolor={"#F6F6F6"}
       >
         <img style={{ width: "96px" }} src={item.img} alt="#" />
-        <Typography>{item.text}</Typography>
+        <Typography color="#000">{item.text}</Typography>
       </Stack>
     </>
   );

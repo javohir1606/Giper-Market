@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useGetProducts } from "../../Service/Query/useGetProducts";
+import { Link } from "react-router-dom";
 
 export const HomeCards = ({ path, name }) => {
   const { data } = useGetProducts(path);
@@ -22,35 +23,36 @@ export const HomeCards = ({ path, name }) => {
         </Box>
         <Box width={"100%"}>
           {data?.slice(0, 3).map((item) => (
-            <Stack
+            <Link
+              style={{ color: "black", textDecoration: "none" }}
               key={item.id}
-              direction={"row"}
-              alignItems={"center"}
-              gap={"16px"}
+              to={`home-detail/${item.id}`}
             >
-              <Box>
-                <img width={"140px"} src={item.img} alt="#" />
-              </Box>
-              <Box>
-                <Typography
-                  fontWeight={"400"}
-                  fontSize={"18px"}
-                  lineHeight={"144%"}
-                  color="#333"
-                  mb={"12px"}
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  fontWeight={"600"}
-                  lineHeight={"156%"}
-                  fontSize={"18px"}
-                  color="black"
-                >
-                  {item.price} Сум
-                </Typography>
-              </Box>
-            </Stack>
+              <Stack direction={"row"} alignItems={"center"} gap={"16px"}>
+                <Box>
+                  <img width={"140px"} src={item.img} alt="#" />
+                </Box>
+                <Box>
+                  <Typography
+                    fontWeight={"400"}
+                    fontSize={"18px"}
+                    lineHeight={"144%"}
+                    color="#333"
+                    mb={"12px"}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    fontWeight={"600"}
+                    lineHeight={"156%"}
+                    fontSize={"18px"}
+                    color="black"
+                  >
+                    {item.price} Сум
+                  </Typography>
+                </Box>
+              </Stack>
+            </Link>
           ))}
         </Box>
       </Box>

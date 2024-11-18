@@ -69,13 +69,11 @@ export const theme = createTheme({
         {
           props: { variant: "contained" },
           style: {
-            fontWeight: 700,
-            fontSize: "20px",
-            color: `${Colors.white}`,
-            padding: "28px 39px 28px 39px",
-            backgroundColor: `${Colors.primary}`,
-            borderRadius: "16px",
-            height: "80px",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "100%",
+            color: `black`,
+            backgroundColor: `${Colors.gipermart}`,
           },
         },
         {

@@ -24,6 +24,7 @@ import {
 import { LeftAngleIcon } from "../../assets/icons/left-angle-icon";
 import { CartIcon } from "../../assets/icons/cart-icon";
 import { LikeIcon } from "../../assets/icons/like-icon";
+import { Link } from "react-router-dom";
 
 export const ProductWrapper = ({ path, name }) => {
   SwiperCore.use([Navigation]);
@@ -68,70 +69,74 @@ export const ProductWrapper = ({ path, name }) => {
         >
           {data?.map((item) => (
             <SwiperSlide key={item.id}>
-              <Stack
-                // justifyContent={""}
-                flexWrap={"wrap"}
-                width={"265px"}
-                height={"300px"}
-                textAlign={"center"}
+              <Link
+                style={{ color: "black", textDecoration: "none" }}
+                to={`home-detail/${item.id}`}
               >
                 <Stack
-                  direction={"row"}
-                  justifyContent={"center"}
-                  gap={"5px"}
-                  mb={"18px"}
+                  flexWrap={"wrap"}
+                  width={"265px"}
+                  height={"300px"}
+                  textAlign={"center"}
                 >
-                  <img
-                    style={{ width: "157px", marginBottom: "14px" }}
-                    src={item.img}
-                    alt="#"
-                  />
-                  <Box position={"relative"}>
-                    <IconButton sx={{ position: "absolute", top: "10px" }}>
-                      <LikeIcon />
-                    </IconButton>
-                  </Box>
-                </Stack>
-                <Stack>
-                  <Typography
-                    variant="body2"
-                    fontWeight={"400"}
-                    lineHeight={"150%"}
-                    fontSize={"16px"}
-                    width={"157px"}
-                    textAlign={"center"}
-                    mx={"auto"}
-                    mb={"18px"}
-                    minHeight={"50px"}
-                  >
-                    {item.title}
-                  </Typography>
                   <Stack
                     direction={"row"}
                     justifyContent={"center"}
-                    alignItems={"end"}
-                    gap={"11px"}
+                    gap={"5px"}
+                    mb={"18px"}
                   >
+                    <img
+                      style={{ width: "157px", marginBottom: "14px" }}
+                      src={item.img}
+                      alt="#"
+                    />
+                    <Box position={"relative"}>
+                      <IconButton sx={{ position: "absolute", top: "10px" }}>
+                        <LikeIcon />
+                      </IconButton>
+                    </Box>
+                  </Stack>
+                  <Stack>
                     <Typography
                       variant="body2"
-                      fontWeight={"600"}
-                      fontSize={"18px"}
-                      color="#333"
+                      fontWeight={"400"}
+                      lineHeight={"150%"}
+                      fontSize={"16px"}
+                      width={"157px"}
+                      textAlign={"center"}
+                      mx={"auto"}
+                      mb={"18px"}
+                      minHeight={"50px"}
                     >
-                      {item.price} Сум
+                      {item.title}
                     </Typography>
-                    <Button
-                      sx={{
-                        bgcolor: "#FEEE00",
-                        borderRadius: "0",
-                        minWidth: "0",
-                      }}
+                    <Stack
+                      direction={"row"}
+                      justifyContent={"center"}
+                      alignItems={"end"}
+                      gap={"11px"}
                     >
-                      <CartIcon />
-                    </Button>
+                      <Typography
+                        variant="body2"
+                        fontWeight={"600"}
+                        fontSize={"18px"}
+                        color="#333"
+                      >
+                        {item.price} Сум
+                      </Typography>
+                      <Button
+                        sx={{
+                          bgcolor: "#FEEE00",
+                          borderRadius: "0",
+                          minWidth: "0",
+                        }}
+                      >
+                        <CartIcon />
+                      </Button>
+                    </Stack>
                   </Stack>
                 </Stack>
-              </Stack>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
