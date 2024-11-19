@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useGetProducts } from "../../Service/Query/useGetProducts";
 import { Link } from "react-router-dom";
+import formatter from "../../utils/formatter";
 
 export const HomeCards = ({ path, name }) => {
   const { data } = useGetProducts(path);
@@ -48,7 +49,7 @@ export const HomeCards = ({ path, name }) => {
                     fontSize={"18px"}
                     color="black"
                   >
-                    {item.price} Сум
+                    {formatter(item.price)} Сум
                   </Typography>
                 </Box>
               </Stack>

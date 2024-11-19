@@ -79,14 +79,11 @@ export const theme = createTheme({
         {
           props: { variant: "outlined" },
           style: {
-            fontWeight: 700,
-            fontSize: "20px",
-            color: `${Colors.primary}`,
-            padding: "28px 39px 28px 39px",
-            backgroundColor: `${Colors.white}`,
-            borderRadius: "16px",
-            border: `1px solid ${Colors.primary}`,
-            height: "80px",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "100%",
+            color: `black`,
+            border: " 1px solid black",
           },
         },
         {

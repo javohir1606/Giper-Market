@@ -1,4 +1,12 @@
-import { Box, colors, Container, Stack, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  colors,
+  Container,
+  Drawer,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { TopHeader } from "./top-header";
 import { LogoIcon } from "../../assets/icons/logo-icon";
@@ -6,9 +14,18 @@ import { BarIcon } from "../../assets/icons/bar-icon";
 import { Colors } from "../../mui-config/colors";
 import { Search } from "../../Components/Search";
 import { ProfileIcon } from "../../assets/icons/profile-icon";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Login } from "../../Components/Login";
+import { Register } from "../../Components/Register";
+import { loadState } from "../../config/Storage";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+  const [open, setOpen] = React.useState(false);
+  const token = loadState("token");
+  const { count } = useSelector((state) => state.product);
+  const [view, setView] = React.useState(false);
+
   return (
     <>
       <Box>
@@ -54,15 +71,80 @@ export const Header = () => {
             <Stack direction={"row"} alignItems={"center"} gap={"32px"}>
               <Stack textAlign={"center"} alignItems={"center"}>
                 <ProfileIcon />
-                <Typography mt={"4px"}>Войти</Typography>
+                {!token ? (
+                  <Box>
+                    <button
+                      onClick={() => setOpen(true)}
+                      style={{
+                        border: "none",
+                        backgroundColor: "transparent",
+                        fontWeight: "400",
+                        fontSize: "18px",
+                        lineHeight: "165%",
+                        cursor: "pointer",
+                        marginTop: "4px",
+                      }}
+                      mt={"4px"}
+                    >
+                      Войти
+                    </button>
+                  </Box>
+                ) : (
+                  <Box>
+                    <button
+                      onClick={() => setOpen(true)}
+                      style={{
+                        border: "none",
+                        backgroundColor: "transparent",
+                        fontWeight: "400",
+                        fontSize: "18px",
+                        lineHeight: "165%",
+                        cursor: "pointer",
+                        marginTop: "4px",
+                      }}
+                      mt={"4px"}
+                    >
+                      {token.user.name}
+                    </button>
+                  </Box>
+                )}
+                <Drawer
+                  PaperProps={{
+                    sx: {
+                      height: "782px",
+                    },
+                  }}
+                  open={open}
+                  anchor="right"
+                  onClose={() => setOpen(false)}
+                >
+                  {view === "signIn" ? (
+                    <Login
+                      onClose={() => setOpen(false)}
+                      onClick={() => setView("register")}
+                    />
+                  ) : (
+                    <Register
+                      onClose={() => setOpen(false)}
+                      onClick={() => setView("signIn")}
+                    />
+                  )}
+                </Drawer>
               </Stack>
               <Stack textAlign={"center"} alignItems={"center"}>
                 <ProfileIcon />
                 <Typography mt={"4px"}>Избранное</Typography>
               </Stack>
               <Stack textAlign={"center"} alignItems={"center"}>
-                <ProfileIcon />
-                <Typography mt={"4px"}>Корзина</Typography>
+                <NavLink
+                  to={"/cart-product"}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Badge badgeContent={count ? count : "0"} color="error">
+                    <ProfileIcon />
+                  </Badge>
+                  <Typography mt={"4px"}>Корзина</Typography>
+                </NavLink>
               </Stack>
             </Stack>
           </Stack>

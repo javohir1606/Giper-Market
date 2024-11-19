@@ -11,6 +11,7 @@ import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { client } from "./config/client.js";
+import { store } from "./Redux/store.js";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter
@@ -18,11 +19,11 @@ createRoot(document.getElementById("root")).render(
   >
     <QueryClientProvider client={client}>
       <ThemeProvider theme={theme}>
-        {/* <Provider store={store}> */}
-        <App />
-        <ToastContainer />
-        <CssBaseline />
-        {/* </Provider> */}
+        <Provider store={store}>
+          <App />
+          <ToastContainer />
+          <CssBaseline />
+        </Provider>
       </ThemeProvider>
     </QueryClientProvider>
   </BrowserRouter>

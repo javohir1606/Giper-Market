@@ -2,10 +2,14 @@ import React from "react";
 import { useGetAllData } from "../../Service/Query/useGetAllData";
 import { useParams } from "react-router-dom";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { addCart } from "../../Redux/Reducers/products-reducer";
+import { useDispatch } from "react-redux";
+import formatter from "../../utils/formatter";
 
 export const HomeDetail = () => {
   const { id } = useParams();
   const { data } = useGetAllData(id);
+  const disptach = useDispatch();
   console.log(data);
 
   return (
@@ -159,9 +163,13 @@ export const HomeDetail = () => {
                   color="#333"
                   mb={"21px"}
                 >
-                  {data.price} Сум
+                  {formatter(data.price)} Сум
                 </Typography>
-                <Button variant="contained" sx={{ padding: "12px 118px" }}>
+                <Button
+                  onClick={() => disptach(addCart(data))}
+                  variant="contained"
+                  sx={{ padding: "12px 118px" }}
+                >
                   В корзину
                 </Button>
               </Box>

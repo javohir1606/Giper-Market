@@ -25,6 +25,7 @@ import { LeftAngleIcon } from "../../assets/icons/left-angle-icon";
 import { CartIcon } from "../../assets/icons/cart-icon";
 import { LikeIcon } from "../../assets/icons/like-icon";
 import { Link } from "react-router-dom";
+import formatter from "../../utils/formatter";
 
 export const ProductWrapper = ({ path, name }) => {
   SwiperCore.use([Navigation]);
@@ -122,7 +123,7 @@ export const ProductWrapper = ({ path, name }) => {
                         fontSize={"18px"}
                         color="#333"
                       >
-                        {item.price} Сум
+                        {formatter(item.price)} Сум
                       </Typography>
                       <Button
                         sx={{

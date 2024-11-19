@@ -4,6 +4,7 @@ import { MainLayout } from "../Layout";
 import { Home } from "../Pages/Home";
 import { CatalogDatas } from "../Pages/Catalog-Datas/catalog-datas";
 import { HomeDetail } from "../Components/HomeDetail";
+import { CartProduct } from "../Components/Cart-Product";
 
 export const Router = () => {
   return (
@@ -11,6 +12,7 @@ export const Router = () => {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="home-detail/:id" element={<HomeDetail />} />
+        <Route path="cart-product" element={<CartProduct />} />
         <Route path="catalog/:name/:text" element={<CatalogDatas />} />
       </Route>
     </Routes>

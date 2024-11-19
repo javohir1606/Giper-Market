@@ -2,6 +2,7 @@ import { Box, Typography, Stack, IconButton, Button } from "@mui/material";
 import React from "react";
 import { LikeIcon } from "../../assets/icons/like-icon";
 import { CartIcon } from "../../assets/icons/cart-icon";
+import formatter from "../../utils/formatter";
 
 export const CatalogAllCards = ({ item }) => {
   const title = item.title;
@@ -58,7 +59,7 @@ export const CatalogAllCards = ({ item }) => {
                 fontSize={"18px"}
                 color="#333"
               >
-                {item.price} Сум
+                {formatter(item.price)} Сум
               </Typography>
               <Button
                 sx={{
