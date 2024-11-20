@@ -19,9 +19,12 @@ import { Login } from "../../Components/Login";
 import { Register } from "../../Components/Register";
 import { loadState } from "../../config/Storage";
 import { useSelector } from "react-redux";
+import { DrowerContext } from "../../Context/open-context";
+import { useContext } from "react";
 
 export const Header = () => {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
+  const { open, setOpen } = useContext(DrowerContext);
   const token = loadState("token");
   const { count } = useSelector((state) => state.product);
   const [view, setView] = React.useState(false);

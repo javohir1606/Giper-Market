@@ -7,6 +7,7 @@ import {
   Button,
 } from "@mui/material";
 import React from "react";
+import { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import formatter from "../../utils/formatter";
 import {
@@ -17,9 +18,12 @@ import { useForm } from "react-hook-form";
 import { loadState, saveState } from "../../config/Storage";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
+import { DrowerContext } from "../../Context/open-context";
 export const CartProduct = () => {
   const queryClient = useQueryClient();
   const { product_list, totalPrice } = useSelector((state) => state.product);
+  const { open, setOpen } = useContext(DrowerContext);
+
   const { count } = useSelector((state) => state.product);
   const navigate = useNavigate();
   const { handleSubmit, reset } = useForm();
@@ -28,7 +32,7 @@ export const CartProduct = () => {
 
   const handleReset = () => {
     if (!token) {
-      navigate("/register");
+      setOpen(!open);
     }
     reset();
   };
@@ -235,7 +239,11 @@ export const CartProduct = () => {
                 </strong>
               </Box>
               <Box>
-                <Button variant="contained" sx={{ padding: "15px 89px" }}>
+                <Button
+                  onClick={() => handleReset()}
+                  variant="contained"
+                  sx={{ padding: "15px 89px" }}
+                >
                   Оформить заказ
                 </Button>
               </Box>
