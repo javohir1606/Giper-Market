@@ -14,8 +14,6 @@ export const Login = ({ onClose, onClick }) => {
 
     mutate(data, {
       onSuccess: (res) => {
-        toast.success(res);
-
         toast.success("welcome");
         saveState("token", res);
       },
