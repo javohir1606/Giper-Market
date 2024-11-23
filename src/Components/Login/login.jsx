@@ -2,7 +2,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { CloseBtnIcon } from "../../assets/icons/close-btn-icon";
-import { useLogin } from "../../Service/Mutation/UseLogin";
+import { useLogin } from "../../Service/Mutation/useLogin";
 import { toast } from "react-toastify";
 import { saveState } from "../../config/Storage";
 
