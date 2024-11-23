@@ -15,7 +15,7 @@ import { Colors } from "../../mui-config/colors";
 import { Search } from "../../Components/Search";
 import { ProfileIcon } from "../../assets/icons/profile-icon";
 import { Link, NavLink } from "react-router-dom";
-import { Login } from "../../Components/Login/login";
+import { Login } from "../../Components/Login";
 import { Register } from "../../Components/Register";
 import { loadState } from "../../config/Storage";
 import { useSelector } from "react-redux";
